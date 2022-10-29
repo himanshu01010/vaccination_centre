@@ -46,7 +46,8 @@ void data(char na[20], char gyu[10],int dba){
 void func (int fn){
             int pc;
             int ac;
-            int bc;
+            char bc;
+            // bct:
             switch (fn)
             {
             case 1:
@@ -59,12 +60,9 @@ void func (int fn){
                 break;
             case 3:
                 printf("Enter your PAN card number:\n", bc);
-                scanf("%d", &bc);
-                break;
-            default:
-                red();
-                printf("It is not in the option\n");
-                reset();
+                scanf("%c", &bc);
+                scanf("%[^\n]",&bc);
+                break;    
             }
             printf("\n");
 
@@ -139,6 +137,7 @@ int main()
             scanf("%c",&l1);
             scanf("%[^\n]", l);
             printf("\n");
+            btc:
             printf("Photo ID card type that you will bring to vaccination center:\n");
             printf("1.Addhar card\n");
             printf("2.Passport\n");
@@ -146,8 +145,17 @@ int main()
             printf("select your option\n", k);
             scanf("%d", &k);
             printf("\n");
+            if(k<4){
+                func(k);
+            }
+            else{
+                red();
+                printf("You enter the wrong option\n\n");
+                reset();
+                goto btc;
+            }
             
-            func(k);
+            // func(k);
 
             char gen[10];
             printf("Enter your gender M/F :\n", gen);
